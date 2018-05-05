@@ -1,9 +1,8 @@
 <?php
 
 $user = 'root';
-$password = 'root';
+$password = '123456';
 $db = 'k3140_chi';
-$host = 'localhost:8889';
+$host = 'mysql';
 
 ?>
-
