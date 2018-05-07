@@ -4,14 +4,17 @@ require_once 'connect.php';
 $link = mysqli_connect($host, $user, $password, $db)
 or die ("Ошибка подключения к базе данных" . mysqli_error());
 
-$name = strtr($_GET['name'], '*', '%');
-$education = strtr($_GET['education'], '*', '%');
+$name = $_GET['name'];
+$education = $_GET['education'];
 
 echo "<form method='GET' action='search.php'>
 <p>Введите фамилию сторудника: <input type='text' name='name' value='$name'></p>
 <p>Введите образование сотрудника: <input type='text' name='education' value='$education'></p>
 <p><input type='submit' name='enter' value='Поиск'></p>
 </form>";
+
+$name = strtr($name, '*', '%');
+$education = strtr($education, '*', '%');
 
 if (isset($_GET['enter'])) {
     $sql="SELECT name, education
