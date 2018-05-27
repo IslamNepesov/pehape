@@ -9,6 +9,7 @@ $name = $_GET['name'];
 $position = $_GET['position'];
 
 echo "<form method='GET' action='edit.php'>
+<input type='hidden' name='id' value='$id'>
 <table border='1'>
 <tr>
 <th>name</th>
@@ -22,13 +23,14 @@ echo "<form method='GET' action='edit.php'>
 <p><input type='submit' name='enter' value='submit changes'></p>
 </form>";
 
+
 if (isset($_GET['enter'])) {
     $update="UPDATE employee
-    SET name =  '$name', position = '$position'
-    WHERE employee_id = $id";
-    mysqli_query($link, $update);
+    SET name='$name', position='$position'
+    WHERE employee_id=$id";
+    $result = mysqli_query($link, $update);
 }
 
-mysqli_close($link);
+echo "<p><a href='list.php?'>back to list.php</a></p>"
 
 ?>
