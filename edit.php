@@ -22,12 +22,9 @@ echo "<form method='GET' action='edit.php'>
 <p><input type='submit' name='enter' value='submit changes'></p>
 </form>";
 
-$name = strtr($name, '*', '%');
-$position = strtr($position, '*', '%');
-
 if (isset($_GET['enter'])) {
     $update="UPDATE employee
-    SET name = $name, position = $position
+    SET name =  '$name', position = '$position'
     WHERE employee_id = $id";
     mysqli_query($link, $update);
 }
